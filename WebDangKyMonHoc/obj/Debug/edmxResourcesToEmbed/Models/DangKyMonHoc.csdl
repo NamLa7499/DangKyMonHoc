@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DangKyMonHocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChiTietChuongTrinhHoc">
+    <Key>
+      <PropertyRef Name="idChiTietCTH" />
+    </Key>
+    <Property Name="idChiTietCTH" Type="Int32" Nullable="false" />
+    <Property Name="idChuongTrinh" Type="Int32" Nullable="false" />
+    <Property Name="MaMH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ChuongTrinhHoc" Relationship="Self.FK_ChiTietChuongTrinhHoc_ChuongTrinhHoc" FromRole="ChiTietChuongTrinhHoc" ToRole="ChuongTrinhHoc" />
+    <NavigationProperty Name="MonHoc" Relationship="Self.FK_ChiTietChuongTrinhHoc_MonHoc" FromRole="ChiTietChuongTrinhHoc" ToRole="MonHoc" />
+  </EntityType>
+  <EntityType Name="ChuongTrinhHoc">
+    <Key>
+      <PropertyRef Name="idChuongTrinh" />
+    </Key>
+    <Property Name="idChuongTrinh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaKhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HocKyChuongTrinh" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChiTietChuongTrinhHocs" Relationship="Self.FK_ChiTietChuongTrinhHoc_ChuongTrinhHoc" FromRole="ChuongTrinhHoc" ToRole="ChiTietChuongTrinhHoc" />
+    <NavigationProperty Name="Khoa" Relationship="Self.FK_ChuongTrinhHoc_Khoa" FromRole="ChuongTrinhHoc" ToRole="Khoa" />
+  </EntityType>
+  <EntityType Name="DotDangKy">
+    <Key>
+      <PropertyRef Name="idDotDangKy" />
+    </Key>
+    <Property Name="idDotDangKy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HocKyChuongTrinh" Type="Int32" Nullable="false" />
+    <Property Name="MaKhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KhoaHoc" Type="Int32" Nullable="false" />
+    <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NgayKetThuc" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Khoa" Relationship="Self.FK_DotDangKy_Khoa" FromRole="DotDangKy" ToRole="Khoa" />
+  </EntityType>
+  <EntityType Name="GiaoVien">
+    <Key>
+      <PropertyRef Name="MaGV" />
+    </Key>
+    <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaKhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NgaySinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Khoa" Relationship="Self.FK_GiaoVien_Khoa" FromRole="GiaoVien" ToRole="Khoa" />
+    <NavigationProperty Name="LopHPs" Relationship="Self.FK_LopHP_GiaoVien" FromRole="GiaoVien" ToRole="LopHP" />
+  </EntityType>
+  <EntityType Name="Khoa">
+    <Key>
+      <PropertyRef Name="MaKhoa" />
+    </Key>
+    <Property Name="MaKhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenKhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ChuongTrinhHocs" Relationship="Self.FK_ChuongTrinhHoc_Khoa" FromRole="Khoa" ToRole="ChuongTrinhHoc" />
+    <NavigationProperty Name="DotDangKies" Relationship="Self.FK_DotDangKy_Khoa" FromRole="Khoa" ToRole="DotDangKy" />
+    <NavigationProperty Name="GiaoViens" Relationship="Self.FK_GiaoVien_Khoa" FromRole="Khoa" ToRole="GiaoVien" />
+    <NavigationProperty Name="Lops" Relationship="Self.FK_Lop_Khoa" FromRole="Khoa" ToRole="Lop" />
+    <NavigationProperty Name="MonHocs" Relationship="Self.FK_MonHoc_Khoa" FromRole="Khoa" ToRole="MonHoc" />
+  </EntityType>
+  <EntityType Name="Lop">
+    <Key>
+      <PropertyRef Name="MaLop" />
+    </Key>
+    <Property Name="MaLop" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenLop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaKhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KhoaHoc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Khoa" Relationship="Self.FK_Lop_Khoa" FromRole="Lop" ToRole="Khoa" />
+    <NavigationProperty Name="SinhViens" Relationship="Self.FK_SinhVien_Lop" FromRole="Lop" ToRole="SinhVien" />
+  </EntityType>
+  <EntityType Name="LopHP">
+    <Key>
+      <PropertyRef Name="MaLHP" />
+    </Key>
+    <Property Name="MaLHP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaMH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaKhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TietHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhongHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Thu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SiSoMax" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HocKy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NamHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="GiaoVien" Relationship="Self.FK_LopHP_GiaoVien" FromRole="LopHP" ToRole="GiaoVien" />
+    <NavigationProperty Name="MonHoc" Relationship="Self.FK_LopHP_MonHoc" FromRole="LopHP" ToRole="MonHoc" />
+    <NavigationProperty Name="PhieuDangKyHocs" Relationship="Self.FK_PhieuDangKyHoc_LopHP" FromRole="LopHP" ToRole="PhieuDangKyHoc" />
+  </EntityType>
+  <EntityType Name="MonHoc">
+    <Key>
+      <PropertyRef Name="MaMH" />
+    </Key>
+    <Property Name="MaMH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenMH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaKhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HocKy" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoTinChi" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ChiTietChuongTrinhHocs" Relationship="Self.FK_ChiTietChuongTrinhHoc_MonHoc" FromRole="MonHoc" ToRole="ChiTietChuongTrinhHoc" />
+    <NavigationProperty Name="Khoa" Relationship="Self.FK_MonHoc_Khoa" FromRole="MonHoc" ToRole="Khoa" />
+    <NavigationProperty Name="LopHPs" Relationship="Self.FK_LopHP_MonHoc" FromRole="MonHoc" ToRole="LopHP" />
+  </EntityType>
+  <EntityType Name="NguoiQuanLy">
+    <Key>
+      <PropertyRef Name="MaNQL" />
+    </Key>
+    <Property Name="MaNQL" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhieuDangKyHoc">
+    <Key>
+      <PropertyRef Name="MaPhieuDangKy" />
+    </Key>
+    <Property Name="MaPhieuDangKy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaLHP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HocKy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NamHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NgayDangKy" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="LopHP" Relationship="Self.FK_PhieuDangKyHoc_LopHP" FromRole="PhieuDangKyHoc" ToRole="LopHP" />
+    <NavigationProperty Name="SinhVien" Relationship="Self.FK_PhieuDangKyHoc_SinhVien" FromRole="PhieuDangKyHoc" ToRole="SinhVien" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="MaSV" />
+    </Key>
+    <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenSV" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaLop" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HeDaoTao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NgaySinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Lop" Relationship="Self.FK_SinhVien_Lop" FromRole="SinhVien" ToRole="Lop" />
+    <NavigationProperty Name="PhieuDangKyHocs" Relationship="Self.FK_PhieuDangKyHoc_SinhVien" FromRole="SinhVien" ToRole="PhieuDangKyHoc" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_ChiTietChuongTrinhHoc_ChuongTrinhHoc">
+    <End Role="ChuongTrinhHoc" Type="Self.ChuongTrinhHoc" Multiplicity="1" />
+    <End Role="ChiTietChuongTrinhHoc" Type="Self.ChiTietChuongTrinhHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuongTrinhHoc">
+        <PropertyRef Name="idChuongTrinh" />
+      </Principal>
+      <Dependent Role="ChiTietChuongTrinhHoc">
+        <PropertyRef Name="idChuongTrinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietChuongTrinhHoc_MonHoc">
+    <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+    <End Role="ChiTietChuongTrinhHoc" Type="Self.ChiTietChuongTrinhHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="MaMH" />
+      </Principal>
+      <Dependent Role="ChiTietChuongTrinhHoc">
+        <PropertyRef Name="MaMH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChuongTrinhHoc_Khoa">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="1" />
+    <End Role="ChuongTrinhHoc" Type="Self.ChuongTrinhHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="ChuongTrinhHoc">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DotDangKy_Khoa">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="1" />
+    <End Role="DotDangKy" Type="Self.DotDangKy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="DotDangKy">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiaoVien_Khoa">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="1" />
+    <End Role="GiaoVien" Type="Self.GiaoVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="GiaoVien">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LopHP_GiaoVien">
+    <End Role="GiaoVien" Type="Self.GiaoVien" Multiplicity="1" />
+    <End Role="LopHP" Type="Self.LopHP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiaoVien">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="LopHP">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lop_Khoa">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="1" />
+    <End Role="Lop" Type="Self.Lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="Lop">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonHoc_Khoa">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="1" />
+    <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="MonHoc">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SinhVien_Lop">
+    <End Role="Lop" Type="Self.Lop" Multiplicity="1" />
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lop">
+        <PropertyRef Name="MaLop" />
+      </Principal>
+      <Dependent Role="SinhVien">
+        <PropertyRef Name="MaLop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LopHP_MonHoc">
+    <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+    <End Role="LopHP" Type="Self.LopHP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="MaMH" />
+      </Principal>
+      <Dependent Role="LopHP">
+        <PropertyRef Name="MaMH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDangKyHoc_LopHP">
+    <End Role="LopHP" Type="Self.LopHP" Multiplicity="1" />
+    <End Role="PhieuDangKyHoc" Type="Self.PhieuDangKyHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LopHP">
+        <PropertyRef Name="MaLHP" />
+      </Principal>
+      <Dependent Role="PhieuDangKyHoc">
+        <PropertyRef Name="MaLHP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDangKyHoc_SinhVien">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="1" />
+    <End Role="PhieuDangKyHoc" Type="Self.PhieuDangKyHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="MaSV" />
+      </Principal>
+      <Dependent Role="PhieuDangKyHoc">
+        <PropertyRef Name="MaSV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DangKyMonHocEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiTietChuongTrinhHocs" EntityType="Self.ChiTietChuongTrinhHoc" />
+    <EntitySet Name="ChuongTrinhHocs" EntityType="Self.ChuongTrinhHoc" />
+    <EntitySet Name="DotDangKies" EntityType="Self.DotDangKy" />
+    <EntitySet Name="GiaoViens" EntityType="Self.GiaoVien" />
+    <EntitySet Name="Khoas" EntityType="Self.Khoa" />
+    <EntitySet Name="Lops" EntityType="Self.Lop" />
+    <EntitySet Name="LopHPs" EntityType="Self.LopHP" />
+    <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
+    <EntitySet Name="NguoiQuanLies" EntityType="Self.NguoiQuanLy" />
+    <EntitySet Name="PhieuDangKyHocs" EntityType="Self.PhieuDangKyHoc" />
+    <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_ChiTietChuongTrinhHoc_ChuongTrinhHoc" Association="Self.FK_ChiTietChuongTrinhHoc_ChuongTrinhHoc">
+      <End Role="ChuongTrinhHoc" EntitySet="ChuongTrinhHocs" />
+      <End Role="ChiTietChuongTrinhHoc" EntitySet="ChiTietChuongTrinhHocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietChuongTrinhHoc_MonHoc" Association="Self.FK_ChiTietChuongTrinhHoc_MonHoc">
+      <End Role="MonHoc" EntitySet="MonHocs" />
+      <End Role="ChiTietChuongTrinhHoc" EntitySet="ChiTietChuongTrinhHocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChuongTrinhHoc_Khoa" Association="Self.FK_ChuongTrinhHoc_Khoa">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="ChuongTrinhHoc" EntitySet="ChuongTrinhHocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DotDangKy_Khoa" Association="Self.FK_DotDangKy_Khoa">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="DotDangKy" EntitySet="DotDangKies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiaoVien_Khoa" Association="Self.FK_GiaoVien_Khoa">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="GiaoVien" EntitySet="GiaoViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LopHP_GiaoVien" Association="Self.FK_LopHP_GiaoVien">
+      <End Role="GiaoVien" EntitySet="GiaoViens" />
+      <End Role="LopHP" EntitySet="LopHPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lop_Khoa" Association="Self.FK_Lop_Khoa">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="Lop" EntitySet="Lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonHoc_Khoa" Association="Self.FK_MonHoc_Khoa">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="MonHoc" EntitySet="MonHocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SinhVien_Lop" Association="Self.FK_SinhVien_Lop">
+      <End Role="Lop" EntitySet="Lops" />
+      <End Role="SinhVien" EntitySet="SinhViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LopHP_MonHoc" Association="Self.FK_LopHP_MonHoc">
+      <End Role="MonHoc" EntitySet="MonHocs" />
+      <End Role="LopHP" EntitySet="LopHPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDangKyHoc_LopHP" Association="Self.FK_PhieuDangKyHoc_LopHP">
+      <End Role="LopHP" EntitySet="LopHPs" />
+      <End Role="PhieuDangKyHoc" EntitySet="PhieuDangKyHocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDangKyHoc_SinhVien" Association="Self.FK_PhieuDangKyHoc_SinhVien">
+      <End Role="SinhVien" EntitySet="SinhViens" />
+      <End Role="PhieuDangKyHoc" EntitySet="PhieuDangKyHocs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

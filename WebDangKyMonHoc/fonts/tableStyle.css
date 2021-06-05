@@ -1,0 +1,78 @@
+﻿table {
+    padding: 0;
+    border: none;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    width: 1170px;
+    margin: 50px auto;
+}
+
+    table td {
+        padding: 0;
+        border: none;
+        border-collapse: collapse;
+    }
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+.table tr > td,
+.table tr > th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table-compare td.compare-label {
+    width: 150px;
+    background: #fafafa;
+    vertical-align: middle;
+}
+
+img {
+    vertical-align: top;
+    max-width: 100%;
+}
+
+.table-compare .product-star .fa {
+    line-height: inherit;
+    color: #ff9900;
+}
+
+.table-compare .price {
+    font-weight: bold;
+    color: #ff3366;
+}
+
+.button {
+    padding: 10px 20px;
+    border: 1px solid #eaeaea;
+    background: #666;
+    color: #fff;
+    line-height: 1.5;
+}
+
+    .button:hover {
+        background: #ff3366;
+        border: 1px solid #ff3366;
+    }
+
+    .button .fa {
+        line-height: inherit;
+    }
+
+.button-sm {
+    padding: 5px 10px;
+    border: 1px solid #eaeaea;
+    outline: none;
+    cursor: pointer;
+}
+
+.table-compare .add-cart {
+    background: #ff3366;
+    color: #fff;
+}

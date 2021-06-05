@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebDangKyMonHoc.Models.MonHoc>
+
+@{
+    ViewBag.Title = "DangKyMonHoc";
+    Layout = "~/Views/Shared/_LayoutPortal.cshtml";
+    <link href="~/fonts/tableStyle.css" rel="stylesheet">
+}
+
+
+@using (Html.BeginForm())
+{
+    <p>
+
+        Tìm Kiếm: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+
+    </p>
+    <p>
+        @if (Session["MaChuyenNganh"] != null)
+        {<u>@Session["MaChuyenNganh"].ToString() </u>}
+    else
+    { <u>Không có gì cả</u>}
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenMH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HocKy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoTinChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Khoa.TenKhoa)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenMH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HocKy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoTinChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Khoa.TenKhoa)
+                </td>
+                <td>
+                    @Html.ActionLink("Đăng Ký", "DangKyLopHocPhan", new { id = item.MaMH }) 
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}

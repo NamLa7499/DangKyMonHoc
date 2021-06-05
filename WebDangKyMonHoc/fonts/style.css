@@ -1,0 +1,16 @@
+﻿.avt {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+}
+.btn-active {
+    background-color: #f0f9ff;
+    border-radius: 0.25rem;
+}
+.position-mota{
+    position: absolute;
+    right: 0;
+}
+.app-container .app-main div.margin-menu {
+    margin-top: 0px
+}

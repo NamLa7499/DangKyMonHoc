@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebDangKyMonHoc.Models.MonHoc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenMH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HocKy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoTinChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Khoa.TenKhoa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenMH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HocKy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoTinChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Khoa.TenKhoa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaMH }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaMH }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaMH })
+        </td>
+    </tr>
+}
+
+</table>

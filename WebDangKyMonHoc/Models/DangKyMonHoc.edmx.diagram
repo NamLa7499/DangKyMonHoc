@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="516d076a9f744bed8f8ffff7c7d27fb9" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="DangKyMonHocModel.ChiTietChuongTrinhHoc" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.ChuongTrinhHoc" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.DotDangKy" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.GiaoVien" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.Khoa" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.Lop" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.LopHP" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.MonHoc" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.NguoiQuanLy" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.PhieuDangKyHoc" Width="1.5" PointX="10.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.SinhVien" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DangKyMonHocModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_ChiTietChuongTrinhHoc_ChuongTrinhHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_ChiTietChuongTrinhHoc_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_ChuongTrinhHoc_Khoa" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_DotDangKy_Khoa" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_GiaoVien_Khoa" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_LopHP_GiaoVien" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_Lop_Khoa" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_MonHoc_Khoa" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_SinhVien_Lop" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_LopHP_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_PhieuDangKyHoc_LopHP" ManuallyRouted="false" />
+        <AssociationConnector Association="DangKyMonHocModel.FK_PhieuDangKyHoc_SinhVien" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

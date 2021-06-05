@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Portal</title>
+    <!-- Bootstrap Core CSS /assets/admin -->
+    <link href="/fonts/Layout/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="/fonts/Layout/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/fonts/Layout/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/fonts/Layout/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="/assets/client/css/style.css">
+    <link rel="stylesheet" href="/assets/client/css/Stylediem.css">
+    <link rel="stylesheet" href="/assets/client/css/edit.css">
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">1</span>
+                    <span class="icon-bar">2</span>
+                    <span class="icon-bar">3</span>
+                </button>
+                <a class="navbar-brand" href="/Portal/Index">Trang Chủ</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                            @if (Session["MaSV"] != null)
+                            {
+
+                               <li> <p>Sinh Viên: @Session["TenSV"].ToString()</p> </li>
+
+                                <li> <a href="@Url.Action("Logout","Portal")" class="btn btn-warning" style="margin-left:100px;">Đăng Xuất</a> </li>
+                            }
+                            else{
+                                <li><a href="/Portal/Login"><i class="fa fa-sign-out fa-fw"></i> Đăng Nhập</a> </li>}
+                        
+
+                        
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="/Portal/Index"><i class="fa fa-dashboard fa-fw"></i>Trang chủ</a>
+                        </li>
+                        @if (Session["MaSV"] != null)
+                        {
+                            <li>
+                                <a href="#"><i class="fa fa-edit fa-fw"></i>Học Phần<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="/Portal/DangKyMonHoc">Đăng Ký Học Phần</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Portal/DanhSachDaDangKy">Học Phần đã đăng ký</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Portal/ThoiKhoaBieu">Thời Khóa Biểu</a>
+                                    </li>
+
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                        }
+                        <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Tin tức<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Portal/Index">Thông báo tuyển sinh</a>
+                                </li>
+                                <li>
+                                    <a href="/Portal/Index">Thông báo sinh viên</a>
+                                </li>
+
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                @RenderBody()
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="height:250px;text-align:center">
+            <H2>TRƯỜNG ĐẠI HỌC NGOẠI NGỮ - TIN HỌC TP. HỒ CHÍ MINH </H2><br />
+            <br />
+            <h3>MÔN LẬP TRÌNH WEB NÂNG CAO</h3><br />
+            <br />
+            <a href="~/Home/Index">Trang Quản Lý</a>
+        </div>
+    </div>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/fonts/Layout/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/fonts/Layout/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/fonts/Layout/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/fonts/Layout/dist/js/sb-admin-2.js"></script>
+    @RenderSection("upload", required: false)
+</body>
+</html>
+

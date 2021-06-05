@@ -1,0 +1,91 @@
+﻿@model WebDangKyMonHoc.Models.LopHP
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LopHP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKhoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TietHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TietHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhongHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhongHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiSoMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiSoMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HocKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HocKy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaoVien.TenGV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaoVien.TenGV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonHoc.TenMH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonHoc.TenMH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLHP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

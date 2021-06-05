@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebDangKyMonHoc.Models.DotDangKy>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HocKyChuongTrinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhoaHoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayBatDau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayKetThuc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Khoa.TenKhoa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HocKyChuongTrinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhoaHoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayBatDau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayKetThuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Khoa.TenKhoa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idDotDangKy }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idDotDangKy }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idDotDangKy })
+        </td>
+    </tr>
+}
+
+</table>

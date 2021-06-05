@@ -1,0 +1,35 @@
+﻿@model WebDangKyMonHoc.Models.ChuongTrinhHoc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChuongTrinhHoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HocKyChuongTrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HocKyChuongTrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Khoa.TenKhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Khoa.TenKhoa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idChuongTrinh }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
