@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WebDangKyMonHoc.Models.ChiTietChuongTrinhHoc>
+
+@{
+    ViewBag.Title = "Chi tiết chương trình học";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết chương trình học</h2>
+<p>
+    @Html.ActionLink("Thêm", "ThemChiTiet")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MonHoc.TenMH)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonHoc.TenMH)
+            </td>
+            <td>
+                @Html.ActionLink("Xóa", "Delete", new { id = item.idChiTietCTH })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,59 @@
+﻿
+@model IEnumerable<WebDangKyMonHoc.Models.MonDaDangKy>
+<h3>Môn đã đăng ký</h3>
+@{
+    ViewBag.Title = "Các Môn Đã Đăng Ký";
+    Layout = "~/Views/Shared/_LayoutPortal.cshtml";
+    <link href="~/fonts/tableStyle.css" rel="stylesheet">
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenMH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenGV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TietHoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhongHoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thu)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenMH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenGV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TietHoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhongHoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thu)
+            </td>
+            <td>
+
+
+                @Html.ActionLink("Hủy Đăng Ký", "HuyDangKy", new { id = item.MaLHP })
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+
